@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "Delete Question";
+}
+
+@model StudentQuestion
+
+<h2> Confirm Deletion</h2>
+<h3> Are you sure you want to delete the question for @Model.StudentFirstName?</h3>
+
+<form method="post" asp-action="Delete">
+    <button type="submit">Delete</button>
+    <a asp-controller="Home" asp-action="QuestionList" class="btn btn-primary">Cancel</a>
+
+    <input type="hidden" asp-for="QuestionID" />
+</form>

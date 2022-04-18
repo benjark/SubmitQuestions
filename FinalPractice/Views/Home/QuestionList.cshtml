@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Question List";
+}
+
+@model List<StudentQuestion>
+
+<table class="table table-bordered table-striped">
+    <thead class="font-weight-bold">
+        <tr>
+            <td>Student First Name</td>
+            <td>Student Last Name </td>
+            <td>Student Net ID</td>
+            <td>Question</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var q in Model)
+            {
+        <tr>
+            <td>@q.StudentFirstName</td>
+            <td>@q.StudentLastName</td>
+            <td>@q.StudentNetID</td>
+            <td>@q.Question</td>
+            <td><a asp-controller="Home" asp-action="Edit" asp-route-questionid="@q.QuestionID">Edit</a></td>
+            <td><a asp-controller="Home" asp-action="Delete" asp-route-questionid="@q.QuestionID">Delete</a></td>
+        </tr>
+            }
+    </tbody>
+</table>
