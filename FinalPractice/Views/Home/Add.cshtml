@@ -22,6 +22,17 @@
 
     <label asp-for="Question">Post your Question</label>
     <input asp-for="Question" />
-<br />
+    <br />
+
+    <label asp-for="AssignmentId">Mission Number</label>
+    <select asp-for="AssignmentId">
+        <option value="">Select an Assignment</option>
+        @foreach (Assignment a in ViewBag.Assignments)
+            {
+                <option value="@a.AssignmentId">@a.AssignmentName</option>
+            }
+    </select>
+
+    <br />
     <button type="submit">Submit Question</button>
 </form>

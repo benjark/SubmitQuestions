@@ -12,6 +12,10 @@ namespace FinalPractice.Models
         public string StudentLastName { get; set; }
         public string StudentNetID { get; set; }
         public string Question { get; set; }
+
+        // Build Foreign Key Relationship
+        public int AssignmentId { get; set; }
+        public Assignment Assignment { get; set; }
         
         }
     

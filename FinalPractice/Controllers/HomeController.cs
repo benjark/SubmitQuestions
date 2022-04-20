@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using FinalPractice.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalPractice.Controllers
 {
@@ -26,6 +27,7 @@ namespace FinalPractice.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.Assignments = context.Assignments.ToList();
             return View();
         }
         [HttpPost]
@@ -40,7 +42,9 @@ namespace FinalPractice.Controllers
         public IActionResult QuestionList (StudentQuestion sq)
         {
             var questions = context.Questions
+            .Include(x => x.Assignment)
             .OrderBy(x => x.StudentFirstName)
+            .Where(x => x.StudentNetID != "bkloepfe")
             .ToList();
             return View(questions);
         }
@@ -48,6 +52,7 @@ namespace FinalPractice.Controllers
         public IActionResult Edit (int questionid)
         {
             var question = context.Questions.Single(q => q.QuestionID == questionid);
+            ViewBag.Assignments = context.Assignments.ToList(); 
             return View("Add", question);
         }
         [HttpPost]
