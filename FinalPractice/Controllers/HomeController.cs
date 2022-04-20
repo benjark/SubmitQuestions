@@ -40,6 +40,7 @@ namespace FinalPractice.Controllers
         public IActionResult QuestionList (StudentQuestion sq)
         {
             var questions = context.Questions
+            .OrderBy(x => x.StudentFirstName)
             .ToList();
             return View(questions);
         }
